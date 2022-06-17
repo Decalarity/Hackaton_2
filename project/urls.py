@@ -14,13 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls.py'))
 """
 from django.contrib import admin
-from django.templatetags.static import static
+# from django.templatetags.static import static
+from django.conf.urls.static import static
 from django.urls import path, include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 
-from project import settings
+from django.conf import settings
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -43,4 +44,4 @@ urlpatterns = [
     path('product/', include('applications.product.urls')),
     path('category/', include('applications.category.urls')),
     path('review/', include('applications.review.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

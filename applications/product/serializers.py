@@ -32,12 +32,14 @@ class ProductSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         rep = super().to_representation(instance)
         rep['images'] = ProductImageSerializer(ProductImage.objects.filter(product=instance.id), many=True).data
-        rep['reviews'] = ReviewSerializer(instance.review.filter(product=instance.id), many=True).data
+        rep['review'] = ReviewSerializer(instance.review.filter(product=instance.id), many=True).data
         total_rating = [i.rating for i in instance.review.all()]
         if len(total_rating) != 0:
             rep["total_rating"] = sum(total_rating)/len(total_rating)
         else:
             rep['total_rating'] = ""
         return rep
+
+
 
 

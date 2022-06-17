@@ -23,6 +23,7 @@ class ProductAdmin(admin.ModelAdmin):
             return ""
 
 
-admin.site.register(Product, ProductAdmin)
+admin.site.register(Product)
+
 
 
