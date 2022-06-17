@@ -8,4 +8,7 @@ class ProductPriceFilter(rest_framework.FilterSet):
 
     class Meta:
         model = Product
-        fields = ['min_price', 'max_price', 'category']
+        fields = ['min_price', 'max_price']
+
+
+
