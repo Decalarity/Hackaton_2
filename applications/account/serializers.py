@@ -122,3 +122,7 @@ class ForgotPasswordCompleteSerializer(serializers.Serializer):
         user = User.objects.get(email=email)
         user.set_password(password)
         user.save()
+
+
+
+
